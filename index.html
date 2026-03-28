@@ -423,6 +423,235 @@
       transform: translateY(0);
     }
 
+
+    /* Ambient blobs */
+    .ambient{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .ambient span{
+      position:absolute;
+      width:42vw;
+      height:42vw;
+      border-radius:50%;
+      filter: blur(70px);
+      opacity:.12;
+      animation: floatBlob 14s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(120,180,255,.75) 0%, rgba(120,180,255,0) 68%);
+    }
+    .ambient span:nth-child(1){ top:-10vw; left:-8vw; }
+    .ambient span:nth-child(2){
+      right:-14vw; top:18vh;
+      animation-duration:18s;
+      background: radial-gradient(circle, rgba(0,255,190,.62) 0%, rgba(0,255,190,0) 70%);
+    }
+    .ambient span:nth-child(3){
+      left:18vw; bottom:-16vw;
+      animation-duration:16s;
+      background: radial-gradient(circle, rgba(128,92,255,.55) 0%, rgba(128,92,255,0) 70%);
+    }
+    @keyframes floatBlob{
+      0%,100%{ transform: translate3d(0,0,0) scale(1); }
+      50%{ transform: translate3d(0,-24px,0) scale(1.08); }
+    }
+
+    .scroll-progress{
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:3px;
+      z-index:10000;
+      background: linear-gradient(90deg, rgba(120,180,255,.9), rgba(0,255,190,.8));
+      box-shadow: 0 0 18px rgba(120,180,255,.45);
+      transform-origin:left center;
+      transform: scaleX(0);
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+    }
+
+    .logo, .header-logo{
+      animation: logoPulse 3.4s ease-in-out infinite;
+      transform-origin:center;
+      position:relative;
+    }
+    .logo::after,
+    .header-logo::after{
+      content:"";
+      position:absolute;
+      inset:-14px;
+      border-radius:inherit;
+      border:1px solid rgba(120,180,255,.16);
+      opacity:.7;
+      animation: ringPulse 3.4s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes logoPulse{
+      0%,100%{ transform: scale(1); box-shadow: 0 0 18px rgba(120,180,255,.28); }
+      50%{ transform: scale(1.02); box-shadow: 0 0 26px rgba(120,180,255,.4), 0 0 50px rgba(0,255,190,.12); }
+    }
+    @keyframes ringPulse{
+      0%,100%{ transform: scale(1); opacity:.28; }
+      50%{ transform: scale(1.07); opacity:.65; }
+    }
+
+    .header-inner,
+    .card,
+    .carousel,
+    .link{
+      transform-style: preserve-3d;
+    }
+
+    .hero-stack{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .hero-panel{
+      width:100%;
+      padding: 16px 18px;
+      border:1px solid rgba(120,180,255,.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--glow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-panel::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(120,180,255,.12) 30%, transparent 58%),
+        radial-gradient(500px 140px at 10% 0%, rgba(0,255,190,.12), transparent 55%);
+      opacity:.65;
+      transform: translateX(-18%);
+      animation: panelSweep 7s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes panelSweep{
+      0%{ transform: translateX(-24%); }
+      100%{ transform: translateX(24%); }
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(120,180,255,.2);
+      background: rgba(5,8,18,.45);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color: rgba(233,241,255,.9);
+      margin-bottom:10px;
+    }
+    .eyebrow::before{
+      content:"";
+      width:7px; height:7px;
+      border-radius:50%;
+      background: rgba(0,255,190,.95);
+      box-shadow: 0 0 12px rgba(0,255,190,.8);
+      animation: livePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes livePulse{
+      0%,100%{ transform: scale(1); opacity:1; }
+      50%{ transform: scale(.7); opacity:.6; }
+    }
+    .hero-title{
+      margin:0;
+      font-size: clamp(24px, 4vw, 40px);
+      line-height:1;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .hero-copy{
+      margin:10px 0 0;
+      color: var(--muted);
+      line-height:1.6;
+      max-width: 58ch;
+      font-size: 14px;
+    }
+
+    .carousel{
+      perspective: 1200px;
+    }
+    .carousel::after{
+      content:"";
+      position:absolute;
+      inset:auto 8% -30px 8%;
+      height:60px;
+      background: radial-gradient(circle, rgba(120,180,255,.24) 0%, rgba(120,180,255,0) 72%);
+      filter: blur(18px);
+      pointer-events:none;
+    }
+
+    .card{
+      backdrop-filter: blur(10px);
+    }
+
+    .link{
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .link::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(115deg, transparent 22%, rgba(120,180,255,.13) 48%, rgba(0,255,190,.08) 54%, transparent 78%);
+      transform: translateX(-120%);
+      transition: transform .7s ease;
+      pointer-events:none;
+    }
+    .link:hover::before, .link:focus::before{
+      transform: translateX(120%);
+    }
+    .link:hover .chev, .link:focus .chev{
+      transform: translateX(2px);
+      box-shadow: var(--glow);
+    }
+    .chev{
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .reveal{
+      opacity:0;
+      transform: translateY(22px) scale(.985);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0) scale(1);
+    }
+
+    .section-divider{
+      height:1px;
+      width:100%;
+      background: linear-gradient(90deg, transparent, rgba(120,180,255,.3), transparent);
+      margin: 6px 0 2px;
+    }
+
+    .footer-inner{
+      position:relative;
+    }
+    .footer-inner::before{
+      content:"";
+      position:absolute;
+      inset:auto 20% 100% 20%;
+      height:24px;
+      background: radial-gradient(circle, rgba(120,180,255,.18) 0%, rgba(120,180,255,0) 70%);
+      filter: blur(16px);
+      pointer-events:none;
+    }
+
     @media (min-width: 700px){
       .title{ font-size: 20px; }
     }
@@ -430,6 +659,8 @@
 </head>
 
 <body class="grid scanlines">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
   <!-- Splash -->
   <section class="splash" id="splash" aria-label="Loading">
     <div class="splash-card">
@@ -450,13 +681,21 @@
   <!-- Main -->
   <div class="wrap main-hidden" id="main">
     <header>
-      <div class="header-inner">
-        <div class="header-logo">
-          <img src="odotnyc3final.png" alt="Logo" />
+      <div class="header-inner reveal" data-tilt>
+        <div class="hero-stack">
+          <div class="header-logo">
+            <img src="odotnyc3final.png" alt="Logo" />
+          </div>
+
+          <div class="hero-panel reveal">
+            <div class="eyebrow">Portal Online</div>
+            <h1 class="hero-title">OBIOS Card v1</h1>
+            <p class="hero-copy">A more futuristic launch interface with motion, glow, pulse, and immersive navigation cues designed to make the portal feel alive the moment the user lands.</p>
+          </div>
         </div>
 
         <!-- Gallery Carousel (5 images) -->
-        <div class="carousel" aria-label="Image gallery">
+        <div class="carousel reveal" aria-label="Image gallery" data-tilt>
           <div class="carousel-track" id="track">
             <!-- Replace gallery1.jpg..gallery5.jpg with your images -->
             <div class="carousel-slide"><img src="odotnyc3final.png" alt="Gallery image 1"><div class="carousel-overlay"></div></div>
@@ -478,14 +717,15 @@
     </header>
 
     <main>
-      <section class="card">
+      <section class="card reveal" data-tilt>
         <div class="content">
           <h1 class="title">Access Portal</h1>
           <p class="hint">Welcome to the OBIOS CARD v1. Choose a realm of OdotNYC below.</p>
+          <div class="section-divider" aria-hidden="true"></div>
 
           <div class="links">
             <!-- LINK 1 -->
-            <a class="link" href="https://www.OdotNYC.xyz" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://www.OdotNYC.xyz" target="_blank" rel="noopener">
               <!-- thumbnail placeholder (replace link1.png when ready) -->
               <div class="thumb placeholder">
                 <img src="odotnyc3final.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
@@ -504,7 +744,7 @@
             </a>
 
             <!-- LINK 2 -->
-            <a class="link" href="https://odotofrva.github.io/rt-site-odotnyc/" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://odotofrva.github.io/rt-site-odotnyc/" target="_blank" rel="noopener">
               <div class="thumb placeholder">
                 <img src="rtlogo.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
               </div>
@@ -522,7 +762,7 @@
             </a>
 
             <!-- LINK 4 -->
-            <a class="link" href="https://odotofrva.github.io/HAGStudios/" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://odotofrva.github.io/HAGStudios/" target="_blank" rel="noopener">
               <div class="thumb placeholder">
                 <img src="hagstudios.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
               </div>
@@ -540,7 +780,7 @@
             </a>
 
             <!-- LINK 3 -->
-            <a class="link" href="https://odotofrva.github.io/mnc-dt/" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://odotofrva.github.io/mnc-dt/" target="_blank" rel="noopener">
               <div class="thumb placeholder">
                 <img src="mnc.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
               </div>
@@ -558,7 +798,7 @@
             </a>
 
             <!-- LINK 4 -->
-            <a class="link" href="https://odotofrva.github.io/CoWoMoSite/" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://odotofrva.github.io/CoWoMoSite/" target="_blank" rel="noopener">
               <div class="thumb placeholder">
                 <img src="cowomo.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
               </div>
@@ -578,7 +818,7 @@
             
 
             <!-- LINK 5 -->
-            <a class="link" href="https://odotofrva.github.io/rt-site-odotnyc/#contact" target="_blank" rel="noopener">
+            <a class="link reveal" data-tilt href="https://odotofrva.github.io/rt-site-odotnyc/#contact" target="_blank" rel="noopener">
               <div class="thumb placeholder">
                 <img src="odotnyc3final.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
               </div>
@@ -602,14 +842,15 @@
 
     <footer>
       <div class="footer-inner">
-        <div>© 2026<span id="year"></span> • RoboTechi Co | All Rights Reserved.</div>
+        <div>© <span id="footerYear"></span> • RoboTechi Co | All Rights Reserved.</div>
       </div>
     </footer>
   </div>
 
   <script>
-    // Year
+    // Years
     document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
 
     // Splash for 3 seconds then show main
     const splash = document.getElementById("splash");
@@ -622,6 +863,18 @@
       }, 3000);
     });
 
+    // Scroll progress
+    const scrollProgress = document.getElementById("scrollProgress");
+    function updateScrollProgress(){
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
+      scrollProgress.style.transform = `scaleX(${progress})`;
+    }
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
     // Simple auto carousel
     const track = document.getElementById("track");
     const dotsWrap = document.getElementById("dots");
@@ -630,6 +883,7 @@
     let index = 0;
     const total = 5;
     const intervalMs = 3500;
+    let carouselTimer;
 
     function goTo(i){
       index = (i + total) % total;
@@ -637,7 +891,16 @@
       dots.forEach((d, di) => d.classList.toggle("active", di === index));
     }
 
-    setInterval(() => goTo(index + 1), intervalMs);
+    function startCarousel(){
+      stopCarousel();
+      carouselTimer = setInterval(() => goTo(index + 1), intervalMs);
+    }
+
+    function stopCarousel(){
+      if (carouselTimer) clearInterval(carouselTimer);
+    }
+
+    startCarousel();
 
     // Optional: swipe support (basic)
     let startX = 0;
@@ -646,6 +909,7 @@
     track.addEventListener("touchstart", (e) => {
       dragging = true;
       startX = e.touches[0].clientX;
+      stopCarousel();
     }, {passive:true});
 
     track.addEventListener("touchend", (e) => {
@@ -654,7 +918,56 @@
       const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
       const diff = endX - startX;
       if (Math.abs(diff) > 35) goTo(index + (diff < 0 ? 1 : -1));
+      startCarousel();
     }, {passive:true});
+
+    track.addEventListener("mouseenter", stopCarousel);
+    track.addEventListener("mouseleave", startCarousel);
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach((item, i) => {
+      item.style.transitionDelay = `${Math.min(i * 60, 420)}ms`;
+      observer.observe(item);
+    });
+
+    // Tilt / parallax interactions
+    const tiltItems = document.querySelectorAll("[data-tilt]");
+    tiltItems.forEach((item) => {
+      item.addEventListener("mousemove", (e) => {
+        const rect = item.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const rx = (0.5 - py) * 8;
+        const ry = (px - 0.5) * 10;
+        item.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+      });
+
+      item.addEventListener("mouseleave", () => {
+        item.style.transform = "";
+      });
+    });
+
+    // Link micro movement
+    document.querySelectorAll(".link").forEach((link) => {
+      link.addEventListener("mousemove", (e) => {
+        const rect = link.getBoundingClientRect();
+        const offsetX = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+        const offsetY = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
+        link.style.transform = `translate(${offsetX * 0.15}px, ${offsetY * 0.15}px)`;
+      });
+      link.addEventListener("mouseleave", () => {
+        link.style.transform = "";
+      });
+    });
   </script>
 </body>
 </html>
