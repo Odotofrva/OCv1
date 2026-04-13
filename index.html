@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OBIOS Card v1</title>
-  <meta name="description" content="Premium futuristic OBIOS portal with snap-scroll sections, cinematic motion, and immersive interactions." />
+  <title>OBIOS | OdotNYC</title>
+  <meta name="description" content="OBIOS is a cinematic black-and-white portal experience with immersive motion, handheld terminal energy, and connected project access." />
   <link rel="preload" href="odotnyc3final.png" as="image" />
   <style>
     :root{
-      --bg:#05070d;
-      --bg2:#090d18;
-      --panel:rgba(10,16,34,.72);
-      --panel-strong:rgba(8,12,24,.88);
-      --text:#edf4ff;
-      --muted:#97a8ca;
-      --line:rgba(120,180,255,.18);
-      --line-strong:rgba(120,180,255,.34);
-      --cyan:rgba(120,180,255,.95);
-      --mint:rgba(0,255,190,.88);
-      --violet:rgba(131,97,255,.8);
+      --bg:#000;
+      --bg2:#050505;
+      --panel:rgba(8,8,8,.82);
+      --panel-strong:rgba(2,12,22,.9);
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --line:rgba(0,247,255,.2);
+      --line-strong:rgba(0,247,255,.42);
+      --cyan:rgba(255,255,255,.95);
+      --mint:rgba(220,220,220,.88);
+      --violet:rgba(160,160,160,.8);
+      --amber:rgba(255,168,0,.7);
       --radius:24px;
-      --shadow:0 0 24px rgba(120,180,255,.22), 0 0 60px rgba(0,255,190,.08);
-      --shadow-strong:0 0 30px rgba(120,180,255,.28), 0 0 80px rgba(0,255,190,.1);
+      --shadow:0 0 24px rgba(0,247,255,.22), 0 0 60px rgba(0,132,255,.08);
+      --shadow-strong:0 0 30px rgba(0,247,255,.28), 0 0 80px rgba(0,132,255,.12), inset 0 0 0 1px rgba(255,255,255,.02);
       --section-pad:clamp(18px, 3vw, 32px);
     }
 
@@ -30,13 +31,13 @@
     body{
       height:100%;
       margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family:'Courier New', Courier, monospace;
       color:var(--text);
       background:
-        radial-gradient(1200px 800px at 12% 8%, rgba(120,180,255,.18), transparent 60%),
-        radial-gradient(900px 760px at 86% 26%, rgba(0,255,190,.08), transparent 56%),
-        radial-gradient(1000px 900px at 50% 120%, rgba(131,97,255,.08), transparent 48%),
-        linear-gradient(180deg, #04060b, #070a12 38%, #060913 100%);
+        radial-gradient(1200px 800px at 12% 8%, rgba(0,247,255,.16), transparent 58%),
+        radial-gradient(900px 760px at 86% 26%, rgba(0,132,255,.14), transparent 54%),
+        radial-gradient(1000px 900px at 50% 120%, rgba(0,255,170,.08), transparent 48%),
+        linear-gradient(180deg, #02050a, #04101a 38%, #02060d 100%);
       overflow-x:hidden;
     }
 
@@ -54,12 +55,12 @@
         linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
       background-size:32px 32px;
       mask-image:radial-gradient(circle at 50% 30%, rgba(0,0,0,.95), rgba(0,0,0,.4) 58%, transparent 88%);
-      opacity:.45;
+      opacity:.55;
     }
     body::after{
       background:repeating-linear-gradient(to bottom, rgba(255,255,255,.02) 0 1px, transparent 3px 6px);
       mix-blend-mode:overlay;
-      opacity:.18;
+      opacity:.22;
     }
 
     .ambient,
@@ -141,7 +142,7 @@
 
     .splash{
       position:fixed;inset:0;z-index:10002;display:grid;place-items:center;padding:20px;
-      background:radial-gradient(900px 600px at 50% 22%, rgba(120,180,255,.16), transparent 58%), linear-gradient(180deg, #03050a, #060913 55%, #03050a);
+      background:radial-gradient(900px 600px at 50% 22%, rgba(0,247,255,.18), transparent 58%), linear-gradient(180deg, #02050a, #05111c 55%, #02050a);
       transition:opacity .55s ease, visibility .55s ease, transform .55s ease;
     }
     .splash.hidden{opacity:0;visibility:hidden;transform:translateY(-6px)}
@@ -480,6 +481,32 @@
     .cta-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
     .footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:6px;border-top:1px solid rgba(120,180,255,.12);font-size:12px;color:rgba(151,168,202,.88)}
 
+
+    .status-widget{
+      position:fixed;
+      left:18px;
+      top:18px;
+      z-index:10003;
+      min-width:220px;
+      padding:14px 16px;
+      border-radius:20px;
+      border:1px solid rgba(0,247,255,.22);
+      background:linear-gradient(180deg, rgba(3,14,24,.88), rgba(2,10,18,.74));
+      box-shadow:0 0 24px rgba(0,247,255,.16), inset 0 0 0 1px rgba(255,255,255,.03);
+      backdrop-filter:blur(10px);
+      display:grid;
+      gap:8px;
+      pointer-events:none;
+    }
+    .status-widget .widget-top,
+    .status-widget .widget-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .status-widget .widget-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(143,183,199,.92)}
+    .status-widget .widget-time{font-size:28px;font-weight:800;letter-spacing:-.04em;color:var(--text);line-height:1}
+    .status-widget .widget-date{font-size:12px;color:var(--muted)}
+    .status-widget .weather-main{font-size:13px;color:var(--text);font-weight:700}
+    .status-widget .weather-sub{font-size:11px;color:var(--muted)}
+    .status-widget .weather-pill{padding:6px 10px;border-radius:999px;border:1px solid rgba(0,247,255,.16);background:rgba(255,255,255,.04);font-size:11px;color:rgba(234,252,255,.92)}
+
     .reveal{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .8s ease, transform .8s ease}
     .reveal.show{opacity:1;transform:translateY(0) scale(1)}
 
@@ -502,17 +529,338 @@
       .metric-row,.portal-mini-grid{grid-template-columns:1fr}
       .headline{font-size:clamp(34px, 12vw, 58px)}
       .copy-block h2,.portal-copy h2,.final-copy h2{font-size:clamp(24px, 8vw, 42px)}
+      .status-widget{left:12px;right:12px;top:12px;min-width:0}
+      .status-widget .widget-time{font-size:24px}
     }
 
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
       .snap-shell{scroll-snap-type:y proximity}
     }
+  
+
+    .tablet-shell{
+      position:fixed;
+      inset:14px;
+      border-radius:34px;
+      border:1px solid rgba(120,180,255,.24);
+      background:linear-gradient(180deg, rgba(3,8,18,.72), rgba(2,5,12,.9));
+      box-shadow:0 0 0 1px rgba(255,255,255,.03), 0 0 40px rgba(120,180,255,.12), inset 0 0 40px rgba(120,180,255,.06);
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .tablet-shell::before{
+      content:"";
+      position:absolute; inset:10px;
+      border-radius:28px;
+      border:1px solid rgba(120,180,255,.12);
+      box-shadow:inset 0 0 24px rgba(120,180,255,.06);
+    }
+    .tablet-shell::after{
+      content:"";
+      position:absolute; left:50%; top:10px; transform:translateX(-50%);
+      width:min(220px,42vw); height:14px; border-radius:0 0 14px 14px;
+      background:linear-gradient(180deg, rgba(1,4,10,.95), rgba(10,18,32,.65));
+      border:1px solid rgba(120,180,255,.16);
+      border-top:none;
+      box-shadow:0 6px 20px rgba(0,0,0,.45);
+    }
+    .tablet-led{
+      position:fixed; top:17px; left:50%; transform:translateX(calc(-50% + 72px));
+      width:8px; height:8px; border-radius:50%; z-index:1; pointer-events:none;
+      background:var(--mint); box-shadow:0 0 18px rgba(0,255,190,.95);
+      animation:livePulse 1.8s ease-in-out infinite;
+    }
+    .tablet-hud{
+      position:fixed; left:28px; right:28px; top:26px; display:flex; justify-content:space-between; align-items:center;
+      z-index:2; pointer-events:none; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(237,244,255,.62);
+    }
+    .hud-block{display:flex; gap:10px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(120,180,255,.16); background:rgba(4,8,16,.36); backdrop-filter:blur(10px)}
+    .hud-right{display:flex; gap:10px; align-items:center}
+    .hud-pill{padding:7px 10px; border-radius:999px; border:1px solid rgba(120,180,255,.16); background:rgba(4,8,16,.3)}
+
+    .device-view{position:relative; padding:clamp(18px,2vw,24px)}
+    .device-view::before{
+      content:""; position:absolute; inset:8px; border-radius:36px; border:1px solid rgba(120,180,255,.16); pointer-events:none;
+      box-shadow:inset 0 0 30px rgba(120,180,255,.05);
+    }
+    .device-view::after{
+      content:""; position:absolute; inset:24px; border-radius:30px; pointer-events:none;
+      background:linear-gradient(135deg, rgba(120,180,255,.06), transparent 26%, transparent 74%, rgba(0,255,190,.06));
+      mask-image:linear-gradient(180deg, black, rgba(0,0,0,.65));
+    }
+    .hero-grid{grid-template-columns:1fr; padding-top:112px}
+    .tablet-stage{
+      position:relative; z-index:1; min-height:inherit; display:grid; grid-template-columns:minmax(320px, 1.15fr) minmax(260px, .85fr); gap:22px; align-items:stretch;
+    }
+    .login-panel, .side-diagnostics{
+      border:1px solid rgba(120,180,255,.18); border-radius:30px; background:linear-gradient(180deg, rgba(8,14,28,.86), rgba(4,8,16,.94));
+      box-shadow:var(--shadow-strong); position:relative; overflow:hidden;
+    }
+    .login-panel::before, .side-diagnostics::before{
+      content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(120,180,255,.07), transparent 18%, transparent 82%, rgba(0,255,190,.05)); pointer-events:none;
+    }
+    .login-top{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 20px; border-bottom:1px solid rgba(120,180,255,.12)}
+    .system-title{font-size:13px; letter-spacing:.22em; text-transform:uppercase; font-weight:800}
+    .system-sub{color:var(--muted); font-size:11px; margin-top:4px; letter-spacing:.12em; text-transform:uppercase}
+    .screen-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:18px; padding:20px}
+    .screen-main{display:grid; gap:18px}
+    .tron-card{border:1px solid rgba(120,180,255,.14); border-radius:24px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); position:relative; overflow:hidden}
+    .tron-card::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(to bottom, rgba(255,255,255,.024) 0 1px, transparent 3px 7px); opacity:.24; pointer-events:none}
+    .handheld-hero{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
+    .avatar-core{width:92px; aspect-ratio:1; border-radius:24px; border:1px solid rgba(120,180,255,.18); background:radial-gradient(circle at 50% 40%, rgba(120,180,255,.22), rgba(8,14,28,.82) 68%); display:grid; place-items:center; box-shadow:inset 0 0 26px rgba(120,180,255,.08), 0 0 20px rgba(120,180,255,.12)}
+    .avatar-core img{width:74%; height:74%; object-fit:contain; filter:drop-shadow(0 0 18px rgba(120,180,255,.32))}
+    .terminal-lines{display:grid; gap:10px; margin-top:10px}
+    .terminal-line{display:flex; align-items:center; gap:10px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(237,244,255,.8)}
+    .terminal-line::before{content:""; width:7px; height:7px; border-radius:50%; background:rgba(120,180,255,.95); box-shadow:0 0 12px rgba(120,180,255,.6)}
+    .login-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
+    .data-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .data-cell{border:1px solid rgba(120,180,255,.12); border-radius:18px; padding:14px; background:rgba(3,8,16,.52)}
+    .data-cell strong{display:block; font-size:20px; letter-spacing:-.03em}
+    .data-cell span{display:block; margin-top:4px; color:var(--muted); font-size:11px; line-height:1.5; text-transform:uppercase; letter-spacing:.12em}
+    .device-console{min-height:100%; display:grid; gap:14px}
+    .console-screen{min-height:330px; border-radius:24px; border:1px solid rgba(120,180,255,.16); background:radial-gradient(360px 200px at 50% 28%, rgba(120,180,255,.16), transparent 58%), linear-gradient(180deg, rgba(6,10,18,.94), rgba(2,4,10,.98)); display:grid; place-items:center; position:relative; overflow:hidden}
+    .console-screen::before{content:""; position:absolute; inset:12px; border-radius:18px; border:1px solid rgba(120,180,255,.12)}
+    .console-screen::after{content:"ACCESS NODE"; position:absolute; left:16px; bottom:14px; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(237,244,255,.56)}
+    .grid-rings{position:absolute; inset:0; background:radial-gradient(circle at center, transparent 0 22%, rgba(120,180,255,.09) 22.5% 23%, transparent 23.5% 34%, rgba(120,180,255,.06) 34.5% 35%, transparent 35.5%), linear-gradient(to right, rgba(120,180,255,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,180,255,.05) 1px, transparent 1px); background-size:auto, 28px 28px, 28px 28px; opacity:.65}
+    .console-screen img{position:relative; z-index:1; width:min(62%, 250px); aspect-ratio:1; object-fit:contain; filter:drop-shadow(0 0 24px rgba(120,180,255,.4)); animation:logoPulse 4.2s ease-in-out infinite}
+    .diag-list{display:grid; gap:10px}
+    .diag-item{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; padding:12px 14px; border:1px solid rgba(120,180,255,.12); border-radius:16px; background:rgba(3,8,16,.44)}
+    .diag-item span{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+    .diag-item strong{font-size:12px; letter-spacing:.14em; text-transform:uppercase}
+    .diag-bar{height:7px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(120,180,255,.1); overflow:hidden}
+    .diag-bar i{display:block; height:100%; width:var(--w,60%); background:linear-gradient(90deg, rgba(120,180,255,.5), rgba(0,255,190,.8)); box-shadow:0 0 12px rgba(120,180,255,.35)}
+    .side-diagnostics{padding:18px; display:grid; gap:14px}
+    .diag-head{display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:4px}
+    .diag-title{font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:800}
+    .diag-copy{color:var(--muted); font-size:13px; line-height:1.65; margin:0}
+
+    @media (max-width: 980px){
+      .tablet-stage, .screen-grid{grid-template-columns:1fr}
+      .tablet-shell{inset:10px}
+      .tablet-hud{left:16px; right:16px; top:20px}
+      .hud-right{display:none}
+    }
+    @media (max-width: 700px){
+      .tablet-shell{inset:6px; border-radius:24px}
+      .tablet-shell::before{inset:7px; border-radius:18px}
+      .tablet-shell::after{height:12px; top:6px}
+      .tablet-led{top:11px}
+      .tablet-hud{top:14px; left:12px; right:12px; font-size:10px}
+      .tablet-stage{gap:16px}
+      .screen-grid{padding:16px}
+      .data-grid{grid-template-columns:1fr}
+      .handheld-hero{grid-template-columns:1fr; justify-items:start}
+    }
+
   </style>
+<style>h1,h2,h3,.brand-chip,.splash-title{letter-spacing:.08em;text-transform:uppercase}.panel,.splash-card{box-shadow:0 0 18px rgba(255,255,255,.12)} .gradient-text{background:linear-gradient(90deg,#fff,#ddd,#999);-webkit-background-clip:text;color:transparent} body::after{opacity:.08}</style>
+<style id="bw-readability-upgrade">
+  :root{
+    --bg:#000000;
+    --bg2:#050505;
+    --panel:rgba(10,10,10,.92);
+    --panel-strong:rgba(8,8,8,.96);
+    --text:#ffffff;
+    --muted:#d9d9d9;
+    --line:rgba(255,255,255,.18);
+    --line-strong:rgba(255,255,255,.32);
+    --cyan:rgba(255,255,255,.98);
+    --mint:rgba(240,240,240,.96);
+    --violet:rgba(200,200,200,.8);
+    --amber:rgba(255,255,255,.72);
+    --shadow:0 0 18px rgba(255,255,255,.08), 0 0 42px rgba(255,255,255,.04);
+    --shadow-strong:0 0 24px rgba(255,255,255,.10), 0 0 52px rgba(255,255,255,.05), inset 0 0 0 1px rgba(255,255,255,.03);
+  }
+
+  html{background:#000 !important;}
+  body{
+    background:
+      radial-gradient(1200px 800px at 12% 8%, rgba(255,255,255,.06), transparent 58%),
+      radial-gradient(900px 760px at 86% 26%, rgba(255,255,255,.04), transparent 54%),
+      radial-gradient(1000px 900px at 50% 120%, rgba(255,255,255,.03), transparent 48%),
+      linear-gradient(180deg, #000000, #090909 38%, #000000 100%) !important;
+    color:var(--text) !important;
+    font-size:18px;
+    line-height:1.8;
+  }
+
+  body::before{
+    background:
+      linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px) !important;
+    opacity:.35 !important;
+  }
+
+  body::after{opacity:.06 !important; background:repeating-linear-gradient(to bottom, rgba(255,255,255,.03) 0 1px, transparent 3px 6px) !important;}
+  .ambient,.ambient::before,.ambient::after{filter:blur(90px) grayscale(1) !important;}
+  .ambient{background:radial-gradient(circle, rgba(255,255,255,.10) 0%, transparent 68%) !important;}
+  .ambient::before{background:radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%) !important;}
+  .ambient::after{background:radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 68%) !important;}
+
+  .scroll-progress{
+    background:linear-gradient(90deg, #ffffff, #cfcfcf) !important;
+    box-shadow:0 0 12px rgba(255,255,255,.2) !important;
+  }
+
+  .tablet-shell,
+  .splash,
+  .splash-card,
+  .panel,
+  .login-panel,
+  .side-diagnostics,
+  .hero-device,
+  .carousel-card,
+  .insight-panel,
+  .portal-panel,
+  .cta-panel,
+  .tron-card,
+  .mini-panel,
+  .cta-card,
+  .data-cell,
+  .diag-item,
+  .brand-chip,
+  .status-chip,
+  .mini-chip,
+  .eyebrow,
+  .status-widget,
+  .nav-btn,
+  .btn,
+  a.link,
+  .thumb,
+  .chev,
+  .metric,
+  .console-screen,
+  .device-frame{
+    border-color:rgba(255,255,255,.16) !important;
+    box-shadow:none !important;
+  }
+
+  .tablet-shell{
+    background:linear-gradient(180deg, rgba(5,5,5,.84), rgba(0,0,0,.96)) !important;
+  }
+  .tablet-shell::before,
+  .tablet-shell::after,
+  .panel::before,
+  .panel::after,
+  .hero-device::before,
+  .device-view::before,
+  .device-view::after,
+  .tron-card::after,
+  .grid-rings,
+  .carousel-overlay{
+    filter:grayscale(1) !important;
+  }
+
+  .gradient-text{
+    background:linear-gradient(90deg,#ffffff,#dcdcdc,#9d9d9d) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+    color:transparent !important;
+  }
+
+  .headline{font-size:clamp(52px, 8vw, 100px) !important; line-height:1.02 !important;}
+  .copy-block h2,.portal-copy h2,.final-copy h2{font-size:clamp(36px,5vw,62px) !important; line-height:1.08 !important;}
+  .hero-copy,.copy-block p,.portal-copy p,.final-copy p,.diag-copy,.insight-card p,.cta-card p{
+    font-size:18px !important;
+    line-height:1.9 !important;
+    color:var(--muted) !important;
+  }
+  .splash-title,.system-title,.diag-title,.brand-chip,.status-chip,.mini-chip,.eyebrow,.system-sub,.terminal-line,.widget-label,.link-title,.link-sub{
+    line-height:1.7 !important;
+  }
+  .splash-title{font-size:18px !important;}
+  .splash-sub,.widget-date,.weather-main,.weather-sub,.system-sub,.terminal-line,.mini-panel span,.data-cell span,.diag-item span,.cta-card p,.insight-card p,.link-sub{font-size:15px !important;}
+  .brand-chip,.status-chip,.mini-chip,.eyebrow{font-size:13px !important; padding:10px 14px !important;}
+  .btn{font-size:17px !important; padding:15px 20px !important;}
+  .widget-time{font-size:34px !important;}
+  .weather-pill{font-size:14px !important;}
+  .link-title{font-size:18px !important;}
+  .metric strong,.data-cell strong{font-size:26px !important;}
+  .carousel-caption strong,.cta-card h3,.insight-card h3{font-size:22px !important;}
+  .footer-row{font-size:15px !important; line-height:1.7 !important;}
+
+  .btn,
+  .nav-btn,
+  a.link{
+    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
+  }
+
+  .btn.primary,
+  .rail button.active,
+  .dot.active{
+    background:#ffffff !important;
+    color:#000 !important;
+  }
+  .rail button{
+    border-color:rgba(255,255,255,.3) !important;
+    background:rgba(255,255,255,.18) !important;
+  }
+
+  .diag-bar{
+    background:rgba(255,255,255,.08) !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  .diag-bar i,
+  .bar span{
+    background:linear-gradient(90deg, rgba(255,255,255,.45), rgba(255,255,255,.9)) !important;
+    box-shadow:none !important;
+  }
+
+  .status-chip::before,
+  .eyebrow::before,
+  .mini-chip.live::before,
+  .tablet-led,
+  .terminal-line::before{
+    background:#ffffff !important;
+    box-shadow:0 0 10px rgba(255,255,255,.45) !important;
+  }
+
+  @media (max-width:700px){
+    body{font-size:17px !important; line-height:1.75 !important;}
+    .headline{font-size:clamp(40px, 12vw, 64px) !important;}
+    .copy-block h2,.portal-copy h2,.final-copy h2{font-size:clamp(30px,8vw,44px) !important;}
+    .hero-copy,.copy-block p,.portal-copy p,.final-copy p,.diag-copy,.insight-card p,.cta-card p{font-size:17px !important;}
+    .widget-time{font-size:28px !important;}
+  }
+</style>
+
 </head>
 <body>
+
+  <div class="tablet-shell" aria-hidden="true"></div>
+  <div class="tablet-led" aria-hidden="true"></div>
+  <div class="tablet-hud" aria-hidden="true">
+    <div class="hud-block">OBIOS // Terminal Session</div>
+    <div class="hud-right">
+      <div class="hud-pill">Monochrome Terminal UI</div>
+      <div class="hud-pill">RoboTechi Link Active</div>
+    </div>
+  </div>
+
   <div class="ambient" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
+
+  <aside class="status-widget" aria-label="System date and weather">
+    <div class="widget-top">
+      <div>
+        <div class="widget-label">System time</div>
+        <div class="widget-time" id="widgetTime">--:--</div>
+      </div>
+      <div class="weather-pill" id="weatherTemp">SYNC</div>
+    </div>
+    <div class="widget-bottom">
+      <div>
+        <div class="widget-date" id="widgetDate">Loading date…</div>
+        <div class="weather-sub" id="weatherLocation">Syncing local weather…</div>
+      </div>
+      <div>
+        <div class="weather-main" id="weatherMain">Live feed pending</div>
+      </div>
+    </div>
+  </aside>
+
 
   <nav class="rail" aria-label="Section navigation">
     <button class="active" data-target="hero" data-label="Launch" aria-label="Go to launch"></button>
@@ -528,7 +876,7 @@
           <img src="odotnyc3final.png" alt="" />
         </div>
         <div>
-          <div class="splash-title">Initializing OBIOS Uplink</div>
+          <div class="splash-title">Initializing OBIOS Interface</div>
           <div class="splash-sub">© <span id="year"></span> • RoboTechi Co | All Rights Reserved.</div>
         </div>
         <div class="bar" aria-hidden="true"><span></span></div>
@@ -541,38 +889,90 @@
       <div class="panel">
         <div class="topbar">
           <div class="brand-chip">OBIOS</div>
-          <div class="status-chip">Portal Online</div>
+          <div class="status-chip">Tablet Online</div>
         </div>
 
         <div class="hero-grid">
-          <div class="reveal" data-tilt>
-            <div class="eyebrow">OBIOS Card v1</div>
-            <h1 class="headline"><span class="gradient-text">OBIOS</span><br>Card v1</h1>
-            <p class="hero-copy">OdotNYC is the creative identity of a New York City–based builder who merges technology, engineering, art, and street culture into one evolving ecosystem. A self-taught full-stack developer and electronics enthusiast, OdotNYC designs digital platforms, embedded systems, and experimental applications while exploring the intersection of software, hardware, and creative expression.</p>
-            <div class="hero-actions">
-              <a class="btn primary" href="#portal">Enter Portal</a>
-              <a class="btn" href="https://www.OdotNYC.xyz" target="_blank" rel="noopener">Visit OdotNYC</a>
-            </div>
-          </div>
+          <div class="device-view reveal">
+            <div class="tablet-stage">
+              <div class="login-panel" data-tilt>
+                <div class="login-top">
+                  <div>
+                    <div class="system-title">OBIOS Terminal Access</div>
+                    <div class="system-sub">monochrome handheld environment // secure creative node</div>
+                  </div>
+                  <div class="mini-chip live">Session active</div>
+                </div>
 
-          <div class="hero-device reveal" data-tilt>
-            <div class="mini-chip live">Live identity node</div>
-            <div class="device-frame">
-              <div class="device-ring"></div>
-              <div class="device-ring"></div>
-              <img src="odotnyc3final.png" alt="OBIOS brand logo" />
+                <div class="screen-grid">
+                  <div class="screen-main">
+                    <div class="tron-card">
+                      <div class="eyebrow">System entry point</div>
+                      <div class="handheld-hero">
+                        <div class="avatar-core">
+                          <img src="odotnyc3final.png" alt="OBIOS brand logo" />
+                        </div>
+                        <div>
+                          <h1 class="headline" style="font-size:clamp(34px,5vw,64px);max-width:none;margin:0"><span class="gradient-text">OBIOS</span><br>Terminal Portal</h1>
+                          <p class="hero-copy" style="margin-top:10px;max-width:60ch">Enter OBIOS through a handheld-style terminal built to feel like a live device, not a static page. This interface brings together identity, motion, and connected creative worlds inside a focused black-and-white operating environment.</p>
+                        </div>
+                      </div>
+                      <div class="terminal-lines">
+                        <div class="terminal-line">Authenticating creator signal // OdotNYC</div>
+                        <div class="terminal-line">Routing network // RoboTechi ecosystem</div>
+                        <div class="terminal-line">Display state // handheld shell engaged</div>
+                      </div>
+                      <div class="login-actions">
+                        <a class="btn primary" href="#portal">Open portal</a>
+                        <a class="btn" href="https://www.OdotNYC.xyz" target="_blank" rel="noopener">Visit main hub</a>
+                      </div>
+                    </div>
+
+                    <div class="data-grid">
+                      <div class="data-cell">
+                        <strong>4</strong>
+                        <span>Linked sectors</span>
+                      </div>
+                      <div class="data-cell">
+                        <strong>24/7</strong>
+                        <span>System presence</span>
+                      </div>
+                      <div class="data-cell">
+                        <strong>Neo</strong>
+                        <span>Display mode</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="device-console">
+                    <div class="console-screen">
+                      <div class="grid-rings" aria-hidden="true"></div>
+                      <img src="odotnyc3final.png" alt="OBIOS portal core" />
+                    </div>
+                    <div class="diag-list">
+                      <div class="diag-item"><span>Signal field</span><strong>Stable</strong></div>
+                      <div class="diag-bar"><i style="--w:82%"></i></div>
+                      <div class="diag-item"><span>Memory stream</span><strong>Aligned</strong></div>
+                      <div class="diag-bar"><i style="--w:68%"></i></div>
+                      <div class="diag-item"><span>Portal link</span><strong>Stable</strong></div>
+                      <div class="diag-bar"><i style="--w:91%"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
             </div>
-            
           </div>
-        </div>
+        </div></div>
       </div>
     </section>
 
     <section class="section" id="showcase" data-section>
       <div class="panel">
         <div class="topbar">
-          <div class="brand-chip">Visual showcase</div>
-          <div class="mini-chip">Animated gallery</div>
+          <div class="brand-chip">Archive</div>
+          <div class="mini-chip">Visual log</div>
         </div>
 
         <div class="showcase-grid">
@@ -622,9 +1022,9 @@
 
           <div class="insight-panel reveal">
             <div class="copy-block">
-              <div class="eyebrow">Cinematic movement</div>
-              <h2>Where Code Meets Culture.</h2>
-              <p>More than development—this is translation. Turning ideas into systems, culture into interfaces, and vision into something you can see, feel, and interact with.</p>
+              <div class="eyebrow">Visual archive</div>
+              <h2>Captured moments from the OBIOS network.</h2>
+              <p>Each frame represents a different signal inside the OBIOS world: brand identity, prototypes, interface studies, and connected experiments unified through one visual system.</p>
             </div>
           </div>
         </div>
@@ -635,30 +1035,30 @@
       <div class="panel">
         <div class="topbar">
           <div class="brand-chip">Portal access</div>
-          <div class="mini-chip">Connected destinations</div>
+          <div class="mini-chip">Connected nodes</div>
         </div>
 
         <div class="portal-grid">
           <div class="portal-copy reveal">
-            <div class="eyebrow">Choose a realm</div>
-            <h2>Connect to a realm within the OdotNYC universe</h2>
-           
+            <div class="eyebrow">Select a destination</div>
+            <h2>Move through the connected worlds inside the OBIOS grid.</h2>
+            <p>Each link below opens a different part of the OdotNYC ecosystem, spanning hardware, AR, fashion, gaming, and community-driven digital experiences.</p>
             <div class="portal-mini-grid">
               <div class="mini-panel">
                 <strong>RoboTechi</strong>
-                <span>Electronics | IOT | Web</span>
+                <span>Electronics | IoT | Web systems</span>
               </div>
               <div class="mini-panel">
                 <strong>MENOCLONE</strong>
-                <span>Digital Thrifting Experience</span>
+                <span>Digital thrifting platform</span>
               </div>
               <div class="mini-panel">
                 <strong>Hacim Alyn</strong>
-                <span>Indie Gaming Studios</span>
+                <span>Indie gaming studio</span>
               </div>
               <div class="mini-panel">
                 <strong>AR OdotNYC</strong>
-                <span>Scan The OdotNYC logo for an AR Experience.</span>
+                <span>Scan the OdotNYC logo to launch the AR experience.</span>
               </div>
             </div>
           </div>
@@ -671,7 +1071,7 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">OdotNYC Website</div>
-                  <div class="link-sub">Main hub / portfolio</div>
+                  <div class="link-sub">Main hub and portfolio</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -684,7 +1084,7 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">RoboTechi Co.</div>
-                  <div class="link-sub">Open-source builds & products</div>
+                  <div class="link-sub">Open-source builds and products</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -697,7 +1097,7 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">Hacim Alyn Indie Gaming Studio</div>
-                  <div class="link-sub">Retro-inspired games, visuals, and digital worlds.</div>
+                  <div class="link-sub">Retro-inspired games, visual worlds, and interactive experiences.</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -710,7 +1110,7 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">MENOCLONE</div>
-                  <div class="link-sub">Digital thrifting experience</div>
+                  <div class="link-sub">Digital thrifting experience and platform</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -723,7 +1123,7 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">Verdé House Co.</div>
-                  <div class="link-sub">NYC Premium Flower</div>
+                  <div class="link-sub">NYC premium flower brand</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -736,20 +1136,20 @@
                 </div>
                 <div class="link-mid">
                   <div class="link-title">AR OdotNYC</div>
-                  <div class="link-sub">Scan OdotNYC logo for AR experience.</div>
+                  <div class="link-sub">Scan the OdotNYC logo for the AR experience.</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
               </a>
 
-              <a class="link" data-tilt href="ttps://odotofrva.github.io/audibotsnyc/" target="_blank" rel="noopener">
+              <a class="link" data-tilt href="https://odotofrva.github.io/audibotsnyc/" target="_blank" rel="noopener">
                 <div class="thumb placeholder">
                   <img src="odotnyc3final.png" alt="" onerror="this.remove(); this.parentElement.classList.add('placeholder');" />
                 </div>
                 <div class="link-mid">
                   <div class="link-title">Audi Bots</div>
-                  <div class="link-sub">AudiBot Community</div>
+                  <div class="link-sub">Audi enthusiast community</div>
                 </div>
                 <div class="chev" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -769,32 +1169,23 @@
     <section class="section" id="final" data-section>
       <div class="panel">
         <div class="topbar">
-          <div class="brand-chip">Final call</div>
-          <div class="mini-chip">Premium close</div>
+          <div class="brand-chip">Direct access</div>
+          <div class="mini-chip">Channel open</div>
         </div>
 
         <div class="final-grid">
           <div class="final-copy reveal">
-            <div class="eyebrow">Wrap Up</div>
-            <h2>Contact OdotNYC.xyz</h2>
-            <p>Building at the intersection of technology, culture, and creativity.
-OdotNYC is where vision is engineered into real experiences.
-Designed for those who see further than their eyesight.</p>
+            <div class="eyebrow">Next step</div>
+            <h2>Connect with the builder behind OBIOS.</h2>
+            <p>Need a custom portal, branded interface, or immersive digital experience? OBIOS is built to translate vision into a system that feels alive, interactive, and ready to be explored.</p>
             <div class="hero-actions">
-              <a class="btn primary" href="https://odotofrva.github.io/rt-site-odotnyc/#contact" target="_blank" rel="noopener">Order Custom Card</a>
-              <a class="btn" href="#hero">Back to top</a>
+              <a class="btn primary" href="https://odotofrva.github.io/rt-site-odotnyc/#contact" target="_blank" rel="noopener">Request a custom build</a>
+              <a class="btn" href="#hero">Return to top</a>
             </div>
           </div>
 
           <div class="cta-panel reveal" data-tilt>
-            <div class="cta-card">
-              <h3>OBIOS - Direct Access</h3>
-              <p>Purchase OBIOS Card v1 directly and step into a new layer of digital interaction. No middle layers—just seamless access to the experience, designed for speed, simplicity, and control.</p>
-            </div>
-            <div class="cta-card">
-              
-              <p>Streamlined for scale and accessibility, OBIOS Card v1 offers a direct-to-user model—removing friction and delivering innovation straight into the hands of the community.</p>
-            </div>
+            
             <div class="footer-row">
               <div>© <span id="footerYear"></span> • RoboTechi Co | All Rights Reserved.</div>
               
@@ -812,6 +1203,55 @@ Designed for those who see further than their eyesight.</p>
 
     const splash = document.getElementById('splash');
     const mainScroller = document.getElementById('mainScroller');
+
+    const widgetTime = document.getElementById('widgetTime');
+    const widgetDate = document.getElementById('widgetDate');
+    const weatherTemp = document.getElementById('weatherTemp');
+    const weatherMain = document.getElementById('weatherMain');
+    const weatherLocation = document.getElementById('weatherLocation');
+
+    function updateWidgetClock(){
+      const now = new Date();
+      widgetTime.textContent = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+      widgetDate.textContent = now.toLocaleDateString([], { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+    }
+    updateWidgetClock();
+    setInterval(updateWidgetClock, 1000);
+
+    const weatherCodes = {
+      0:'Clear sky',1:'Mostly clear',2:'Partly cloudy',3:'Cloud cover',45:'Fog',48:'Rime fog',51:'Light drizzle',53:'Drizzle',55:'Dense drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',80:'Rain showers',81:'Showers',82:'Strong showers',85:'Snow showers',86:'Heavy snow showers',95:'Thunderstorm',96:'Storm + hail',99:'Severe storm'
+    };
+
+    async function loadWeather(){
+      if(!('geolocation' in navigator)){
+        weatherLocation.textContent = 'Geolocation unavailable';
+        weatherMain.textContent = 'Weather offline';
+        weatherTemp.textContent = 'N/A';
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=auto`);
+          const weatherData = await weatherRes.json();
+          const current = weatherData.current || {};
+          const temp = Math.round(current.temperature_2m);
+          weatherTemp.textContent = Number.isFinite(temp) ? `${temp}°F` : 'N/A';
+          weatherMain.textContent = weatherCodes[current.weather_code] || 'Live conditions';
+          weatherLocation.textContent = `Lat ${latitude.toFixed(2)} • Lon ${longitude.toFixed(2)}`;
+        } catch (err) {
+          weatherMain.textContent = 'Weather sync failed';
+          weatherLocation.textContent = 'Using local date only';
+          weatherTemp.textContent = 'ERR';
+        }
+      }, () => {
+        weatherLocation.textContent = 'Location permission denied';
+        weatherMain.textContent = 'Weather hidden';
+        weatherTemp.textContent = '--';
+      }, { enableHighAccuracy:false, timeout:8000, maximumAge:600000 });
+    }
+    loadWeather();
+
 
     window.addEventListener('load', () => {
       setTimeout(() => {
